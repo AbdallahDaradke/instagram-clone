@@ -1,0 +1,37 @@
+<div style="display: flex; flex-direction: column; gap: 1000px">
+  <div class="post" data-loaded="false">Loading post...</div>
+  <div class="post" data-loaded="false" style="font-size: 45px">
+    Loading post...
+  </div>
+  <div class="post" data-loaded="false">Loading post...</div>
+</div>
+
+<script>
+  function loadPost(el) {
+    // Simulate content loading
+    el.textContent = "This is a loaded post!";
+    el.dataset.loaded = "true";
+  }
+  const observer = new IntersectionObserver(
+    (entries, observer) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const el = entry.target;
+
+          // Avoid reloading if already loaded
+          if (el.dataset.loaded === "false") {
+            loadPost(el);
+            observer.unobserve(el); // stop watching this element
+          }
+        }
+      });
+    },
+    {
+      root: null, // default: viewport
+      threshold: 0.9, // trigger when 10% is visible
+    }
+  );
+  document.querySelectorAll(".post").forEach((post) => {
+    observer.observe(post);
+  });
+</script>

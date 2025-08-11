@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"
+    />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Instagram</title>
+  </head>
+  <body>
+    <div class="container">
+      <!-- Left Sidebar -->
+
+      <div class="whole-sidebar">
+        <aside class="left-sidebar">
+          <div class="logo-sidebar">
+            <span>Instagram</span>
+          </div>
+          <div class="row-sidebar home-sidebar">
+            <i class="bi bi-house-door-fill"></i>
+            <span>Home</span>
+          </div>
+          <div class="row-sidebar search-sidebar">
+            <i class="bi bi-search"></i>
+            <span>Search</span>
+          </div>
+          <div class="row-sidebar explore-sidebar">
+            <i class="bi bi-compass"></i>
+            <span>Explore</span>
+          </div>
+          <div class="row-sidebar reels-sidebar">
+            <i class="bi bi-camera-reels"></i>
+            <span>Reels</span>
+          </div>
+          <div class="row-sidebar messages-sidebar">
+            <i class="bi bi-send-fill"></i>
+            <span>Messages</span>
+          </div>
+          <div class="row-sidebar notifications-sidebar">
+            <i class="bi bi-heart"></i>
+            <span>Notifications</span>
+          </div>
+          <div class="row-sidebar create-sidebar">
+            <i class="bi bi-plus-square"></i>
+            <span>Create</span>
+          </div>
+          <div class="row-sidebar profile-sidebar">
+            <i class="bi bi-person-circle"></i>
+            <span>Profile</span>
+          </div>
+        </aside>
+        <aside class="bottom-sidebar">
+          <div class="row-sidebar home-sidebar">
+            <i class="bi bi-list"></i>
+            <span>More</span>
+          </div>
+          <div class="row-sidebar home-sidebar">
+            <i class="bi bi-grid"></i>
+            <span>Also from Abcd</span>
+          </div>
+        </aside>
+      </div>
+      <!-- main -->
+      <main id="main" class="main" style="text-align: center; color: white">
+        <!-- postsContainer -->
+        <div id="postsContainer">
+          <!-- img-swap container -->
+          <div class="img-swap">
+            <!-- previous button to go to the previous image -->
+            <button id="prevImg"><</button>
+            <!-- img element (we swap the elements through) through passing different src each time -->
+            <img
+              id="image-collection"
+              alt=""
+              width="300px"
+              height="400px"
+              style="display: none"
+            />
+            <div id="loader">Loading image...</div>
+            <!-- Next button to go to the next image -->
+            <button id="nextImg">></button>
+          </div>
+        </div>
+      </main>
+      <!-- Right Sidebar -->
+      <aside class="right-sidebar">
+        <div class="right-row-sidebar home-sidebar">
+          <img src="image/abdallah.jpg" class="sidebar-img" />
+          <div>
+            <div class="name">daradkehabdallah</div>
+            <div class="caption">Suggested for you</div>
+          </div>
+          <span>Switch</span>
+        </div>
+        <div class="right-row-sidebar home-sidebar">
+          <img src="image/kid.png" class="sidebar-img" />
+          <div>
+            <div class="name">sanad_210</div>
+            <div class="caption">Suggested for you</div>
+          </div>
+          <span>Follow</span>
+        </div>
+        <div class="right-row-sidebar home-sidebar">
+          <img src="image/man.jpeg" class="sidebar-img" />
+          <div>
+            <div class="name">yazanabuiyad</div>
+            <div class="caption">Followed by abdulrahmandradkeh</div>
+          </div>
+          <span>Follow</span>
+        </div>
+        <div class="right-row-sidebar home-sidebar">
+          <img src="image/manShape.jpeg" class="sidebar-img" />
+          <div>
+            <div class="name">loayshanti</div>
+            <div class="caption">Suggested for you</div>
+          </div>
+          <span>Follow</span>
+        </div>
+        <div class="right-row-sidebar home-sidebar">
+          <img src="image/prof-img.png" class="sidebar-img" />
+          <div>
+            <div class="name">ammartafili</div>
+            <div class="caption">Suggested for you</div>
+          </div>
+          <span>Follow</span>
+        </div>
+        <div class="right-row-sidebar home-sidebar">
+          <img src="image/kid.png" class="sidebar-img" />
+          <div>
+            <div class="name">daradkehabdallah</div>
+            <div class="caption">Suggested for you</div>
+          </div>
+          <span>Follow</span>
+        </div>
+        <div class="right-row-sidebar home-sidebar">
+          <img src="image/man.jpeg" class="sidebar-img" />
+          <div>
+            <div class="name">richman</div>
+            <div class="caption">Suggested for you</div>
+          </div>
+          <span>Follow</span>
+        </div>
+        <div class="right-row-sidebar home-sidebar">
+          <img src="image/manShape.jpeg" class="sidebar-img" />
+          <div>
+            <div class="name">fareshorani</div>
+            <div class="caption">Suggested for you</div>
+          </div>
+          <span>Follow</span>
+        </div>
+      </aside>
+      <!-- Message Box -->
+      <div style="color: white" class="message-sidebar">
+        <i class="bi bi-messenger"></i>
+        <span>Messages</span>
+        <span class="message-imgs-container">
+          <img src="image/kid.png" class="messages-block-img img1" />
+          <img src="image/manShape.jpeg" class="messages-block-img img2" />
+          <img src="image/prof-img.png" class="messages-block-img img3" />
+        </span>
+      </div>
+    </div>
+
+    <script>
+      function getRandomInteger(min, max) {
+        min = Math.ceil(min); // Ensure min is a whole number
+        max = Math.floor(max); // Ensure max is a whole number
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+      }
+      function preloadImage(index) {
+        if (index >= 0 && index < arrayNew.length) {
+          const img = new Image();
+          img.src = arrayNew[index];
+        }
+        if (index < 0) {
+          const img = new Image();
+          img.src = arrayNew[arrayNew.length - 1];
+        }
+      }
+      function renderPost(postEl) {
+        const data = JSON.parse(postEl.dataset.post);
+        const postTitle = document.createElement("div");
+        postTitle.classList.add("postTitle");
+        postTitle.innerHTML = data.title;
+
+        const postBody = document.createElement("div");
+        postBody.classList.add("postBody");
+        postBody.innerHTML = data.body;
+
+        const postImg = document.createElement("img");
+        postImg.classList.add("postImg");
+        postImg.setAttribute("loading", "lazy");
+        const imgId = getRandomInteger(data.id, 1000) + 1;
+        postImg.src = `https://picsum.photos/id/${imgId}/200/300`;
+
+        postEl.innerHTML = "";
+        postEl.appendChild(postTitle);
+        postEl.appendChild(postBody);
+        postEl.appendChild(postImg);
+      }
+      document.addEventListener("DOMContentLoaded", function (event) {
+        //IntersectionObserver setup
+        const observer = new IntersectionObserver(
+          (entries, obs) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                const postEl = entry.target;
+
+                // Render current post
+                renderPost(postEl);
+                // Render next 3 posts if any
+                let nextSibling = postEl.nextElementSibling;
+                for (let i = 0; i < 3 && nextSibling; i++) {
+                  renderPost(nextSibling);
+                  // Stop observing rendered siblings
+                  observer.unobserve(nextSibling);
+                  nextSibling = nextSibling.nextElementSibling;
+                }
+
+                //Stop observing this elemen
+                obs.unobserve(postEl);
+              }
+            });
+          },
+          {
+            root: null, //viewport
+            threshold: 0.25, // 25 percent of element must be visible
+          }
+        );
+        // Fetch the posts
+        fetch("https://jsonplaceholder.typicode.com/posts")
+          .then((response) => {
+            console.log(response);
+            return response.json();
+          })
+          .then((response) => {
+            console.log(response);
+            return response;
+          })
+          .then((response) => {
+            response.forEach((element) => {
+              console.log(element.userId);
+            });
+            let postsContainer = document.getElementById("postsContainer");
+            let mainTag = document.getElementById("main");
+            let imageCollection = [];
+            response.forEach((response) => {
+              // let postSubject = document.createElement("div");
+              // let postTitle = document.createElement("div");
+              // postTitle.classList.add("postTitle");
+              // let postBody = document.createElement("div");
+              // let postTextContainer = document.createElement("div");
+              // postTextContainer.classList.add("postTextContainer");
+              // let postContainer = document.createElement("div");
+              // postContainer.classList.add("postContainer");
+              // let postImg = document.createElement("img");
+              // postImg.classList.add("postImg");
+              // const imgId = getRandomInteger(response.id, 1000) + 1; // for example
+              // postImg.src = `https://picsum.photos/id/${imgId}/200/300`;
+              // postImg.setAttribute("loading", "lazy"); //Lazy Load for posts image
+              // // postSubject.innerHTML = response.userId;
+              // postTitle.innerHTML = response.title;
+              // postBody.innerHTML = response.body;
+
+              // // postContainer.appendChild(postSubject);
+              // postContainer.appendChild(postTitle);
+              // postContainer.appendChild(postBody);
+              // postTextContainer.appendChild(postTitle);
+              // postTextContainer.appendChild(postBody);
+
+              // postContainer.appendChild(postTextContainer);
+              // postContainer.appendChild(postImg);
+
+              // postsContainer.appendChild(postContainer);
+              const postContainer = document.createElement("div");
+              postContainer.classList.add("postContainer");
+              // postContainer.setAttribute("data-post", "post");
+              // Store post data as dataset for lazy rendering
+              postContainer.dataset.post = JSON.stringify(response);
+
+              // Add placeholder
+              postContainer.innerHTML = `<div class="placeholder">Loading...</div>`;
+
+              // Append and observe
+              postsContainer.appendChild(postContainer);
+              observer.observe(postContainer);
+            });
+            // mainTag.appendChild(postsContainer);
+            // return postsContainer;
+          });
+        // .then((response) => {
+        //   let mainTag = document.getElementById("main");
+        //   mainTag.innerHTML = response;
+        // });
+
+        let array = ["image/abdallah.jpg", "image/kid.png"];
+        let imgTag = document.getElementById("image-collection");
+
+        let prevImg = document.getElementById("prevImg");
+        let counterImg = 0;
+
+        let imagesObj;
+        let arrayNew = [];
+
+        fetch(`https://picsum.photos/v2/list?page=1&limit=10`)
+          .then((response) => {
+            return response.json();
+          })
+          .then((response) => {
+            imagesObj = response;
+            console.log(response);
+
+            let i = 0;
+
+            response.forEach((element) => {
+              arrayNew[i] = `https://picsum.photos/id/${i}/300/200`;
+              console.log(arrayNew);
+              i++;
+
+              // Preload the image
+              // const preload = new Image();
+              // preload.src = `https://picsum.photos/id/${i}/300/200`;
+            });
+
+            // imgTag.src = arrayNew[counterImg];
+            //
+            //
+
+            const preloader = new Image();
+            preloader.src = arrayNew[counterImg];
+
+            document.getElementById("loader").style.display = "block";
+            imgTag.style.display = "none";
+
+            preloader.onload = () => {
+              imgTag.src = preloader.src;
+              document.getElementById("loader").style.display = "none";
+              imgTag.style.display = "inline-block";
+            };
+            //
+            //
+            for (let i = -2; i <= 2; i++) {
+              if (i != 0) preloadImage(counterImg + 1);
+            }
+
+            return arrayNew;
+          })
+          .then((response) => {
+            console.log(response);
+            imgTag.src = arrayNew[counterImg];
+          });
+        imgTag.onload = () => {
+          document.getElementById("loader").style.display = "none";
+          imgTag.style.display = "inline-block";
+        };
+
+        prevImg.addEventListener("click", function (event) {
+          event.preventDefault();
+          counterImg--;
+          if (counterImg < 0) {
+            counterImg = 0;
+          }
+
+          const preloader = new Image();
+          preloader.src = arrayNew[counterImg];
+
+          document.getElementById("loader").style.display = "block";
+          imgTag.style.display = "none";
+
+          preloader.onload = () => {
+            imgTag.src = preloader.src;
+            document.getElementById("loader").style.display = "none";
+            imgTag.style.display = "inline-block";
+          };
+
+          preloadImage(counterImg + 1);
+          preloadImage(counterImg - 1);
+        });
+        nextImg.addEventListener("click", function (event) {
+          event.preventDefault();
+          counterImg++;
+          if (counterImg >= arrayNew.length) {
+            counterImg = arrayNew.length - 1;
+          }
+
+          const preloader = new Image();
+          preloader.src = arrayNew[counterImg];
+
+          document.getElementById("loader").style.display = "block";
+          imgTag.style.display = "none";
+
+          preloader.onload = () => {
+            imgTag.src = preloader.src;
+            document.getElementById("loader").style.display = "none";
+            imgTag.style.display = "inline-block";
+          };
+
+          preloadImage(counterImg + 1);
+          preloadImage(counterImg - 1);
+        });
+      });
+    </script>
+  </body>
+</html>
